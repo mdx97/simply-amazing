@@ -8,8 +8,7 @@
 
 SDL_Window *Engine::window = nullptr;
 
-// Initializes SDL and sets up the engine for use.
-// This function should always be the first thing called.
+// Initializes the engine and begins the game loop.
 void Engine::Start(const std::string &title, int width, int height)
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
@@ -26,11 +25,7 @@ void Engine::Start(const std::string &title, int width, int height)
 
     RenderSystem::background = SDL_GetWindowSurface(window);
     std::srand(std::time(nullptr));
-}
 
-// Runs the main game loop until the user exits the program.
-void Engine::Run()
-{
     while (!EventSystem::exit) {
         EventSystem::Process();
         SceneSystem::Tick();
@@ -40,8 +35,7 @@ void Engine::Run()
     End();
 }
 
-// Cleans up any engine allocated memory.
-// This function should always be the last thing called.
+// Cleans up any engine allocated memory and exits the engine.
 void Engine::End()
 {
     SDL_Surface *surface = SDL_GetWindowSurface(window);
