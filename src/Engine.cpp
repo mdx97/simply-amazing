@@ -4,19 +4,20 @@
 #include "Engine.h"
 #include "EventSystem.h"
 #include "RenderSystem.h"
+#include "ResourceManager.h"
 #include "SceneSystem.h"
 
 SDL_Window *Engine::window = nullptr;
 
 // Initializes the engine and begins the game loop.
-void Engine::Start(const std::string &title, int width, int height)
+void Engine::Init(const EngineConfig &config)
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         std::cout << "SDL could not initialize! Error: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
-    window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow(config.title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, config.window_width, config.window_height, SDL_WINDOW_SHOWN);
 
     if (window == nullptr) {
         std::cout << "Window could not be created! Error: " << SDL_GetError() << std::endl;
@@ -26,6 +27,14 @@ void Engine::Start(const std::string &title, int width, int height)
     RenderSystem::background = SDL_GetWindowSurface(window);
     std::srand(std::time(nullptr));
 
+    if (config.icon_path != "") {
+        auto *icon = SDL_LoadBMP(config.icon_path.c_str());
+        SDL_SetWindowIcon(Engine::window, icon);
+    }
+}
+
+void Engine::Start()
+{
     while (!EventSystem::exit) {
         EventSystem::Process();
         SceneSystem::Tick();
