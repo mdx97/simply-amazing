@@ -15,10 +15,10 @@ void DrawEntities(const std::vector<Entity *> &entities)
             SDL_Rect rect = { 
                 entity->x + sprite->x,
                 entity->y + sprite->y,
-                sprite->surface->w, 
-                sprite->surface->h 
+                static_cast<int>(sprite->surface->w * sprite->w),
+                static_cast<int>(sprite->surface->h * sprite->h)
             };
-            SDL_BlitSurface(sprite->surface, nullptr, RenderSystem::background, &rect);
+            SDL_BlitScaled(sprite->surface, nullptr, RenderSystem::background, &rect);
         }
     }
 }

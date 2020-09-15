@@ -9,10 +9,12 @@ class SpriteComponent : public Component
 {
 public:
     SpriteComponent(const std::string &image_path);
+    SpriteComponent(const std::string &image_path, int x, int y, float w, float h);
     ~SpriteComponent();
     void Update(float elapsed) { }
     SDL_Surface *surface = nullptr;
     int x, y;
+    float w, h;
 };
 
 #endif
