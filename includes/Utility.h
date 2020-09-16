@@ -5,6 +5,7 @@
 
 namespace Utility {
     void CenterEntity(Entity *entity, SDL_Surface *container, int width, int height);
+    float DegreesToRadians(float degrees);
 };
 
 #endif

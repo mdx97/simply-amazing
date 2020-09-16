@@ -13,8 +13,8 @@ void DrawEntities(const std::vector<Entity *> &entities)
 
         if (sprite != nullptr) {
             SDL_Rect rect = { 
-                entity->x + sprite->x,
-                entity->y + sprite->y,
+                static_cast<int>(entity->x) + sprite->x,
+                static_cast<int>(entity->y) + sprite->y,
                 static_cast<int>(sprite->surface->w * sprite->w),
                 static_cast<int>(sprite->surface->h * sprite->h)
             };

@@ -8,8 +8,8 @@ void UIComponent::Update(float elapsed)
     
     if (sprite != nullptr) {
         SDL_Rect rect = { 
-            entity->x + sprite->x,
-            entity->y + sprite->y,
+            static_cast<int>(entity->x) + sprite->x,
+            static_cast<int>(entity->y) + sprite->y,
             sprite->surface->w, 
             sprite->surface->h 
         };

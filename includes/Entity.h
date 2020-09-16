@@ -23,7 +23,7 @@ public:
 class Entity
 {
 public:
-    int x, y;
+    float x, y;
     const char *type;
     Composite *composite;
     std::vector<Component *> components;
