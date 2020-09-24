@@ -6,7 +6,7 @@ CPP_FILENAMES := $(patsubst src/%.cpp,%,$(CPP_FILES))
 define COMPILE_CPP
 
 build/$(1).o : src/$(1).cpp
-	@g++ -c src/$(1).cpp -I $(PROJECT_DIR)includes -I /d/MinGW_Dev/include/SDL2 -o build/$(1).o -O0 -std=c++17 -fpic
+	@g++ -c src/$(1).cpp -I $(PROJECT_DIR)includes -I /d/MinGW_Dev/include/SDL2 -o build/$(1).o -O0 -std=c++17 -fpic -g
 
 endef
 

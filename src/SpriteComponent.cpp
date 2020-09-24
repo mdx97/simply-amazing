@@ -23,3 +23,13 @@ SpriteComponent::~SpriteComponent()
 {
     SDL_FreeSurface(surface);
 }
+
+float SpriteComponent::PixelHeight()
+{
+    return surface->h * this->h;
+}
+
+float SpriteComponent::PixelWidth()
+{
+    return surface->w * this->w;
+}

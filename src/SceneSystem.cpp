@@ -39,13 +39,7 @@ void SceneSystem::Tick()
 
     current->Update(elapsed);
 
-    for (auto *entity : current->entities) {
-        for (auto *component : entity->components) {
-            component->Update(elapsed);
-        }
-    }
-
-    for (auto *entity : persistent_entities) {
+    for (auto *entity : GetAllEntities()) {
         for (auto *component : entity->components) {
             component->Update(elapsed);
         }
@@ -56,4 +50,12 @@ void SceneSystem::Tick()
 void SceneSystem::AddPersistentEntity(Entity *entity)
 {
     persistent_entities.push_back(entity);
+}
+
+std::vector<Entity *> SceneSystem::GetAllEntities()
+{
+    std::vector<Entity *> entities;
+    entities.insert(entities.end(), persistent_entities.begin(), persistent_entities.end());
+    entities.insert(entities.end(), current->entities.begin(), current->entities.end());
+    return entities;
 }

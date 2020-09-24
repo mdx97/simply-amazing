@@ -10,6 +10,7 @@ namespace SceneSystem {
     void Load(Scene *scene);
     void Tick();
     void AddPersistentEntity(Entity *entity);
+    std::vector<Entity *> GetAllEntities();
 };
 
 #endif
