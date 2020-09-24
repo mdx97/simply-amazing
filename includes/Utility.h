@@ -2,6 +2,7 @@
 #define UTILITY_H
 
 #include "SDL.h"
+#include "CollisionComponent.h"
 
 namespace Utility {
     void CenterEntity(Entity *entity, SDL_Surface *container, int width, int height);

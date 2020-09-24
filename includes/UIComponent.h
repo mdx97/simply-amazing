@@ -9,7 +9,7 @@ class UIComponent : public Component
 public:
     void Update(float elapsed);
     SDL_Surface *hover_surface = nullptr;
-    void (*click)(Entity *);
+    void (*click)(Entity *) = nullptr;
 
 private:
     void HandleClick();

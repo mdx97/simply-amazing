@@ -41,7 +41,7 @@ Rectangle ColliderToRectangle(const Entity *entity, const CollisionComponent *co
 
 bool FloatsEqual(float float1, float float2)
 {
-    std::cout << float1 << " " << float2 << std::endl;
+    //std::cout << float1 << " " << float2 << std::endl;
     return std::fabs(float1 - float2) < 0.001;
 }
 
