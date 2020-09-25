@@ -33,9 +33,10 @@ bool Collides(const CollisionComponent *collider1, const CollisionComponent *col
 }
 
 // @TEMP: This entire function should be swapped out for angle of incidence calculation.
-void Flip(PhysicsComponent *phys)
+void Bounce(PhysicsComponent *phys)
 {
-    phys->direction -= 180;
+    phys->direction = 180 - phys->direction;
+    std::cout << phys->direction << std::endl;
     if (phys->direction < 0)
         phys->direction += 360;
 }
@@ -57,10 +58,10 @@ void PhysicsEngine::Tick()
                         auto *jPhys = entities[j]->GetComponent<PhysicsComponent>();
 
                         if (iPhys != nullptr)
-                            Flip(iPhys);
+                            Bounce(iPhys);
 
                         if (jPhys != nullptr)
-                            Flip(jPhys);
+                            Bounce(jPhys);
                     }
                 }
             }
