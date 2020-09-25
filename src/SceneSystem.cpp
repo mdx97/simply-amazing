@@ -56,6 +56,9 @@ std::vector<Entity *> SceneSystem::GetAllEntities()
 {
     std::vector<Entity *> entities;
     entities.insert(entities.end(), persistent_entities.begin(), persistent_entities.end());
-    entities.insert(entities.end(), current->entities.begin(), current->entities.end());
+
+    if (current != nullptr)
+        entities.insert(entities.end(), current->entities.begin(), current->entities.end());
+        
     return entities;
 }

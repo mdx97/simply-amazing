@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Engine.h"
 #include "EventSystem.h"
+#include "PhysicsEngine.h"
 #include "RenderSystem.h"
 #include "ResourceManager.h"
 #include "SceneSystem.h"
@@ -37,6 +38,7 @@ void Engine::Start()
 {
     while (!EventSystem::exit) {
         EventSystem::Process();
+        PhysicsEngine::Tick();
         SceneSystem::Tick();
         RenderSystem::Draw();
     }
