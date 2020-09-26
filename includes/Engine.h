@@ -9,12 +9,14 @@ struct EngineConfig {
     int window_width;
     int window_height;
     std::string icon_path;
+    bool debug;
 };
 
 namespace Engine {
     extern SDL_Window *window;
-    
-    void Init(const EngineConfig &config);
+    extern EngineConfig *config;
+
+    void Init(EngineConfig *config);
     void Start();
     void End();
 };

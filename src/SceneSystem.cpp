@@ -62,3 +62,8 @@ std::vector<Entity *> SceneSystem::GetAllEntities()
         
     return entities;
 }
+
+void SceneSystem::Synchronize()
+{
+    last_clock = std::chrono::system_clock::now();
+}

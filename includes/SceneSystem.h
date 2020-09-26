@@ -12,6 +12,7 @@ namespace SceneSystem {
     void Tick();
     void AddPersistentEntity(Entity *entity);
     std::vector<Entity *> GetAllEntities();
+    void Synchronize();
 };
 
 #endif
