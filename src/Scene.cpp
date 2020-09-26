@@ -1,6 +1,12 @@
 #include <algorithm>
 #include "Scene.h"
 
+Scene::~Scene()
+{
+    for (auto *entity : entities)
+        delete entity;
+}
+
 void Scene::AddEntity(Entity *entity)
 {
     entities.push_back(entity);

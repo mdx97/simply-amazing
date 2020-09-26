@@ -23,6 +23,7 @@ void SceneSystem::Tick()
     if (next != nullptr) {
         if (current != nullptr) {
             current->OnUnload();
+            delete current;
         }
         current = next;
         current->OnLoad();
