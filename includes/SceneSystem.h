@@ -7,6 +7,7 @@
 namespace SceneSystem {
     extern Scene *current;
     extern std::vector<Entity *> persistent_entities;
+    
     void Load(Scene *scene);
     void Tick();
     void AddPersistentEntity(Entity *entity);

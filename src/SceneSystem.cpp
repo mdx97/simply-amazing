@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "SceneSystem.h"
 
+// This vector stores entities that exist regardless of scene changes.
 std::vector<Entity *> SceneSystem::persistent_entities;
 
 Scene *SceneSystem::current = nullptr;
@@ -11,13 +12,12 @@ Scene *next = nullptr;
 
 std::chrono::system_clock::time_point last_clock = std::chrono::system_clock::now();
 
-// Loads a new scene to be played.
 void SceneSystem::Load(Scene *scene)
 {
+    // Note: mid-frame scene changes won't take effect until the next frame.
     next = scene;
 }
 
-// Updates every entity in the current scene.
 void SceneSystem::Tick()
 {
     if (next != nullptr) {
@@ -46,7 +46,6 @@ void SceneSystem::Tick()
     }
 }
 
-// Adds an entity that will stay present across scenes.
 void SceneSystem::AddPersistentEntity(Entity *entity)
 {
     persistent_entities.push_back(entity);

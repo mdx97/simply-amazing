@@ -3,10 +3,11 @@
 #include "Logger.h"
 #include "ResourceManager.h"
 
-// Helper function for resolving arbitrary resource paths.
 std::string GetResourcePath(const std::string &id, const std::string &extension)
 {
     std::ostringstream sstream;
+    
+    // @TODO: Make this configurable?
     sstream << "resources/" << id << "." << extension;
 
     std::fstream fstream;
@@ -22,13 +23,11 @@ std::string GetResourcePath(const std::string &id, const std::string &extension)
     return sstream.str();
 }
 
-// Returns the path for an image resource.
 std::string ResourceManager::GetImagePath(const std::string &id)
 {
     return GetResourcePath(id, "bmp");
 }
 
-// Returns the path for an audio resource.
 std::string ResourceManager::GetAudioPath(const std::string &id)
 {
     return GetResourcePath(id, "wav");

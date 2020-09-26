@@ -16,6 +16,7 @@ public:
     const char *type;
 
     Composite();
+
     void AddEntity(Entity *entity);
     void RemoveEntity(Entity *entity);
 };
@@ -30,6 +31,7 @@ public:
     
     Entity();
     ~Entity();
+    
     void AddComponent(Component *component);
 
     template <typename T>T* GetComponent()

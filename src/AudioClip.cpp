@@ -23,7 +23,6 @@ AudioClip::~AudioClip()
     SDL_FreeWAV(buffer);
 }
 
-// Populates the audio buffer (stream) with audio data to be played.
 // Only works for a single traversal of the buffer.
 void AudioClip::Callback(void *userdata, Uint8 *stream, int len)
 {
@@ -39,27 +38,23 @@ void AudioClip::Callback(void *userdata, Uint8 *stream, int len)
     }
 }
 
-// Moves the pointer back to the beginning of the audio data.
 void AudioClip::Reset()
 {
     pointer = buffer;
 }
 
-// Returns whether or not the AudioClip was properly initialized.
 bool AudioClip::Good()
 {
     return buffer != nullptr;
 }
 
-// Populates the audio buffer (stream) with audio data to be played.
-// Output loops back to the beginning when it reaches the end of the buffer.
 void LoopedAudioClip::Callback(void *userdata, Uint8 *stream, int len)
 {
     for (int i = 0; i < len; i++) {
         stream[i] = *pointer;
         pointer++;
 
-        // If we have reached the end of our clip's audio buffer, wrap around to the beginning.
+        // Upon reaching the end, wrap around to the beginning of the buffer.
         if (pointer == buffer + length) {
             Reset();
         }

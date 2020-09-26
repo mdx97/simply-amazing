@@ -23,7 +23,6 @@ void UIComponent::Update(float elapsed)
     }
 }
 
-// Calls the click handler function if a click event has happened.
 void UIComponent::HandleClick()
 {
     if (Mouse::left_click && click != nullptr) {
@@ -31,7 +30,6 @@ void UIComponent::HandleClick()
     }
 }
 
-// Updates the sprite to use the hover image.
 void UIComponent::Hover(SpriteComponent *sprite)
 {
     if (hover_surface != nullptr && sprite->surface != hover_surface) {
@@ -42,7 +40,6 @@ void UIComponent::Hover(SpriteComponent *sprite)
     }
 }
 
-// Updates the sprite to use the unhovered image.
 void UIComponent::Unhover(SpriteComponent *sprite)
 {
     if (original_surface != nullptr && sprite->surface != original_surface) {

@@ -7,14 +7,12 @@
 std::fstream file;
 bool usable = false;
 
-// Configures the logger to output to the given file.
 void Logger::SetFile(const std::string &path)
 {
     file.open(path.c_str(), std::ios::out);
     usable = file.is_open();
 }
 
-// Writes a message to the log file.
 void Logger::Write(const std::string &message)
 {
     if (!usable) {

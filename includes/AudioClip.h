@@ -9,6 +9,7 @@ class AudioClip
 public:
     AudioClip(const std::string &filepath);
     ~AudioClip();
+    
     virtual void Callback(void *userdata, Uint8 *stream, int len);
     void Reset();
     bool Good();

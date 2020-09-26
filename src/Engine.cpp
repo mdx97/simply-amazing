@@ -10,7 +10,6 @@
 
 SDL_Window *Engine::window = nullptr;
 
-// Initializes the engine and begins the game loop.
 void Engine::Init(const EngineConfig &config)
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
@@ -46,7 +45,6 @@ void Engine::Start()
     End();
 }
 
-// Cleans up any engine allocated memory and exits the engine.
 void Engine::End()
 {
     SDL_Surface *surface = SDL_GetWindowSurface(window);

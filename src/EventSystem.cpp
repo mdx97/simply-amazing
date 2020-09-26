@@ -6,7 +6,6 @@ bool EventSystem::exit = false;
 
 bool scancode_pressed_states[SDL_NUM_SCANCODES];
 
-// Checks for new I/O events and updates the Event System's internal representation of the state of these various I/O devices.
 void EventSystem::Process()
 {
     SDL_Event e;
@@ -25,7 +24,6 @@ void EventSystem::Process()
     }
 }
 
-// Returns whether the given key was pressed this frame.
 bool EventSystem::IsKeyDown(SDL_Scancode scancode)
 {
     return scancode_pressed_states[scancode];

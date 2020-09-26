@@ -6,8 +6,7 @@
 std::vector<AudioClip *> playing;
 SDL_AudioDeviceID device_id = 0;
 
-// Handles calling every currently playing audio clips' audio callback functions, 
-// and then combines the resulting audio streams into one.
+// Gather all audio streams from currently playing clips and merges them into one.
 void AudioCallback(void *userdata, Uint8 *stream, int len)
 {
     std::vector<Uint8 *> streams;
@@ -32,8 +31,6 @@ void AudioCallback(void *userdata, Uint8 *stream, int len)
     }
 }
 
-// Opens the default audio device to allow for audio playback.
-// Lazily called from AudioSystem::PlayClip()
 void Initialize()
 {
     // @TODO: handle errors.
@@ -53,7 +50,6 @@ void Initialize()
     SDL_PauseAudioDevice(device_id, 0);
 }
 
-// Begins playing the given audio clip.
 void AudioSystem::PlayClip(AudioClip *clip)
 {
     if (!clip->Good()) {
@@ -68,7 +64,6 @@ void AudioSystem::PlayClip(AudioClip *clip)
     playing.push_back(clip);
 }
 
-// Stops playing the given clip.
 void AudioSystem::FreeClip(AudioClip *clip)
 {
     auto element = std::find(playing.begin(), playing.end(), clip);
@@ -78,7 +73,6 @@ void AudioSystem::FreeClip(AudioClip *clip)
     }
 }
 
-// Controls whether or not audio is played.
 void AudioSystem::ToggleSound(bool on)
 {
     SDL_PauseAudioDevice(device_id, static_cast<int>(!on));

@@ -5,6 +5,7 @@
 
 namespace EventSystem {
     extern bool exit;
+    
     void Process();
     bool IsKeyDown(SDL_Scancode scancode);
 };

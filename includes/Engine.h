@@ -13,6 +13,7 @@ struct EngineConfig {
 
 namespace Engine {
     extern SDL_Window *window;
+    
     void Init(const EngineConfig &config);
     void Start();
     void End();

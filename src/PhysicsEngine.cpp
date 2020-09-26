@@ -36,7 +36,6 @@ bool Collides(const CollisionComponent *collider1, const CollisionComponent *col
 void Bounce(PhysicsComponent *phys)
 {
     phys->direction = 180 - phys->direction;
-    std::cout << phys->direction << std::endl;
     if (phys->direction < 0)
         phys->direction += 360;
 }
@@ -46,13 +45,9 @@ void PhysicsEngine::Tick()
     auto entities = SceneSystem::GetAllEntities();
 
     for (int i = 0; i < entities.size(); i++) {
-        auto *collider = entities[i]->GetComponent<CollisionComponent>();
-        
-        if (collider != nullptr) {
+        if (auto *collider = entities[i]->GetComponent<CollisionComponent>(); collider != nullptr) {
             for (int j = i + 1; j < entities.size(); j++) {
-                auto *other = entities[j]->GetComponent<CollisionComponent>();
-                
-                if (other != nullptr) {
+                if (auto *other = entities[j]->GetComponent<CollisionComponent>(); other != nullptr) {
                     if (Collides(collider, other)) {
                         auto *iPhys = entities[i]->GetComponent<PhysicsComponent>();
                         auto *jPhys = entities[j]->GetComponent<PhysicsComponent>();
